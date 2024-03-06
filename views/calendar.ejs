@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Recipe Dashboard</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <!-- <link href="assets/img/favicon.png" rel="icon"> -->
+  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/evo-calendar@1.1.3/evo-calendar/css/evo-calendar.min.css'>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/evo-calendar@1.1.3/evo-calendar/css/evo-calendar.midnight-blue.min.css'>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/evo-calendar@1.1.3/evo-calendar/js/evo-calendar.min.js'></script>
+
+
+  
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/admin" class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block">Recipe Dashboard</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <a href="/admin/staffs" class="btn btn-sm btn-pink me-2"><i class="bi bi-people-fill"></i></a>
+        <a href="/admin/calendar" class="btn btn-sm btn-pink me-2"><i class="bi bi-calendar-date"></i></a>
+        <a href="/admin/messages" class="btn btn-sm btn-pink me-2"><i class="bi bi-envelope"></i></a>
+        <a href="#" class="btn btn-sm btn-pink me-2"><i class="bi bi-bell"></i></a>
+
+        <li class="nav-item dropdown pe-3 ps-4">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2"></span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile pt-0">
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+
+      <!-- <li class="nav-heading">Recipe management</li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="upload_recipe.html">
+          <i class="bi bi-plus-lg"></i>
+          <span>Recipes: Upload</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="previous_recipe.html">
+          <i class="bi bi-list-check"></i>
+          <span>Recipes: Previous Uploads</span>
+        </a>
+      </li> -->
+
+
+      
+
+
+      <li class="nav-heading">Admin actions</li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/staffs">
+          <i class="bi bi-people-fill"></i>
+          <span>All staff</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/calendar">
+          <i class="bi bi-calendar-date"></i>
+          <span>Calendar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/messages">
+          <i class="bi bi-envelope"></i>
+          <span>Messages</span>
+        </a>
+      </li>
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Calendar</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+          <li class="breadcrumb-item active">Calendar</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section upload_summary_wrapper">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">Event calendar</div>
+
+              <div class="calendarFilter mb-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    All
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                  <label class="form-check-label" for="flexCheckDefault1">
+                    Kitchen testing <span class="indicator bg-pink"></span>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                  <label class="form-check-label" for="flexCheckDefault3">
+                    Customer XP testing <span class="indicator bg-blue"></span>
+                  </label>
+                </div>
+              </div>
+
+
+
+
+
+              <div id="calendar"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">Upcoming Event</div>
+
+              <div class="item">
+                <samll class="d-block">22nd Jan | 8:00pm - 12:00pm</samll>
+                <span class="badge bg-success my-2">Active</span>
+                <h5><b>Event: </b> Kitchen Lab Testing</h5>  
+                <h6><b>Report reference no.: </b> 1234</h6>  
+                <h6><b>Recipe: </b> 30</h6>  
+              </div>
+
+              <div class="butttons">
+                <a href="#" class="btn btn-sm btn-pink"><i class="bi bi-download pe-1"></i> Recipe PDF</a>
+                <a href="#" class="btn btn-sm btn-blue"><i class="bi bi-eye pe-1"></i> Supplies list</a>
+              </div>
+
+              <div class="links d-flex align-items-center my-4">
+                <a href="#"><i class="bi bi-envelope pe-1"></i> Email</a>
+                <span class="mx-2">|</span>
+                <a href="#"><i class="bi bi-envelope pe-1"></i> Message</a>
+              </div>
+
+              <div class="cancelEvent">
+                <a href="#" class="btn btn-danger d-block text-center">Cancel event</a>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/assets/vendor/quill/quill.min.js"></script>
+  <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+
+
+
+  <script>
+    $('#calendar').evoCalendar({
+        settingName: "hello",
+        calendarEvents:[
+            {
+                id: '4hducye',
+                description: `
+                  <div class="item">
+                    <samll class="d-block">24th Jan | 8:00pm - 12:00pm</samll>
+                    <span class="badge bg-success my-2">Active</span>
+                    <h5><b>Event: </b> Kitchen Lab Testing</h5>
+                    <h6><b>Report reference no.: </b> 1234</h6>
+                    <h6><b>Recipe versions: </b> 30</h6>
+                    <h6><b>Staff: </b> 4</h6>
+                    <h6><i class="bi bi-geo-alt-fill"></i>  <b>Woking test centre</b></h6>
+                  </div>
+                  
+                  <div class="butttons">
+                    <a href="#" class="btn btn-sm btn-pink"><i class="bi bi-download pe-1"></i> Recipe PDF</a>
+                    <a href="#" class="btn btn-sm btn-blue"><i class="bi bi-eye pe-1"></i> Supplies list</a>
+                  </div>
+
+                  <div class="links d-flex align-items-center my-4">
+                    <a href="#"><i class="bi bi-envelope pe-1"></i> Email</a>
+                    <span class="mx-2">|</span>
+                    <a href="#"><i class="bi bi-envelope pe-1"></i> Message</a>
+                  </div>
+
+                  <div class="cancelEvent">
+                    <a href="#" class="btn btn-danger d-block text-center">Cancel event</a>
+                  </div>
+                  `,
+                name:'Kitchen Event',
+                date: "January/24/2024",
+                type: 'event',
+                color: '#fe206d',
+                everyYear: false
+                // badge: '1-day event',
+              },
+              {
+                id: '4hducye',
+                name:'Customer XP testing event',
+                description: `
+                  <div class="item">
+                    <samll class="d-block">26nd Jan | 8:00pm - 12:00pm</samll>
+                    <span class="badge bg-success my-2">Active</span>
+                    <h5><b>Event: </b> Custom XP testing event</h5>
+                    <h6><b>Report reference no.: </b> 1234</h6>
+                    <h6><b>Recipe versions: </b> 30</h6>
+                    <h6><b>Staff: </b> 4</h6>
+                    <h6><i class="bi bi-geo-alt-fill"></i>  <b>Woking test centre</b></h6>
+                  </div>
+                  
+                  <div class="butttons">
+                    <a href="#" class="btn btn-sm btn-pink"><i class="bi bi-download pe-1"></i> Recipe PDF</a>
+                    <a href="#" class="btn btn-sm btn-blue"><i class="bi bi-eye pe-1"></i> Supplies list</a>
+                  </div>
+
+                  <div class="links d-flex align-items-center my-4">
+                    <a href="#"><i class="bi bi-envelope pe-1"></i> Email</a>
+                    <span class="mx-2">|</span>
+                    <a href="#"><i class="bi bi-envelope pe-1"></i> Message</a>
+                  </div>
+
+                  <div class="cancelEvent">
+                    <a href="#" class="btn btn-danger d-block text-center">Cancel event</a>
+                  </div>
+                  `,
+                date: "January/26/2024",
+                type: 'birthday',
+                color: '#0a397e',
+                everyYear: false
+                // badge: '1-day event',
+            }
+        ]
+    })
+
+  </script>
+
+  <!-- Template Main JS File -->
+  <script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>

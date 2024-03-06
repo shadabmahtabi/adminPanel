@@ -1,0 +1,6 @@
+name
+designation
+email
+phone number
+username
+role

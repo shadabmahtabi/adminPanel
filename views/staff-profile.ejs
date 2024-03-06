@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Recipe Dashboard</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <!-- <link href="assets/img/favicon.png" rel="icon"> -->
+  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/admin" class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block">Recipe Dashboard</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <a href="/admin/staffs" class="btn btn-sm btn-pink me-2"><i class="bi bi-people-fill"></i></a>
+        <a href="/admin/calendar" class="btn btn-sm btn-pink me-2"><i class="bi bi-calendar-date"></i></a>
+        <a href="/admin/messages" class="btn btn-sm btn-pink me-2"><i class="bi bi-envelope"></i></a>
+        <a href="#" class="btn btn-sm btn-pink me-2"><i class="bi bi-bell"></i></a>
+
+        <li class="nav-item dropdown pe-3 ps-4">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2"></span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile pt-0">
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+
+      <!-- End New recipe Nav -->
+
+
+
+
+
+      <li class="nav-heading">Admin actions</li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/staffs">
+          <i class="bi bi-people-fill"></i>
+          <span>All staff</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/calendar">
+          <i class="bi bi-calendar-date"></i>
+          <span>Calendar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/messages">
+          <i class="bi bi-envelope"></i>
+          <span>Messages</span>
+        </a>
+      </li>
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Staff profile</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+          <li class="breadcrumb-item active">Staff profile</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section staff-profie-wrapper">
+      <div class="card">
+        <div class="card-body pt-4">
+          <div class="row align-items-center">
+            <div class="col-md-3">
+              <div class="imageWrapper">
+                <img src="<%= user.profilePic %>" alt="">
+              </div>
+              <!-- <div class="imageWrapper"><img src="https://i.pravatar.cc/300?img=16" alt=""></div> -->
+            </div>
+
+            <div class="col-md-9">
+              <h2 class="mt-0"><b>
+                  <%= user.name %>
+                </b></h2>
+              <h5><b>
+                  <%= user.profession %>
+                </b></h5>
+              <hr>
+              <div class="item">
+                <b><i class="bi bi-hash"></i> Reference no.: </b> <span>1234</span>
+              </div>
+              <div class="item">
+                <b><i class="bi bi-telephone"></i> Phone number: </b> <span>
+                  <%= user.mobileNumber %>
+                </span>
+              </div>
+
+              <div class="buttons my-4">
+                <a href="#" class="btn btn-sm btn-pink"><i class="bi bi-envelope pe-1"></i> Email</a>
+                <a href="#" class="btn btn-sm btn-blue"><i class="bi bi-envelope pe-1"></i> Message</a>
+              </div>
+
+              <div class="links">
+                <a href="/admin/staff/account/<%= user._id %>" class="link">Account details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="card-body pt-4">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                <label class="form-check-label" for="flexCheckDefault1"> Upcoming recipe allocation (100) </label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                <label class="form-check-label" for="flexCheckDefault"> Previous recipe reviews (650) </label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                <label class="form-check-label" for="flexCheckDefault2"> View flagged recipes (8) </label>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="table-responsive mt-5">
+            <table class="table" style="width:100%">
+              <col width="10%">
+              <col width="10%">
+              <col width="">
+              <col width="">
+              <col width="">
+              <col width="50%">
+              <col width="">
+              <thead>
+                <tr>
+                  <th>Report ref.</th>
+                  <th>Version</th>
+                  <th>Date assessed</th>
+                  <th>Verdict</th>
+                  <th>Edited</th>
+                  <th>Comments</th>
+                  <th><i class="bi bi-flag"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1234</td>
+                  <td>
+                    <div>V1</div>
+                    <div>V2</div>
+                    <div>V3</div>
+                  </td>
+                  <td>
+                    <div>12/01/2023</div>
+                    <div>12/01/2023</div>
+                    <div>12/01/2023</div>
+                  </td>
+                  <td>
+                    <div><i class="bi bi-check"></i></div>
+                    <div><i class="bi bi-check"></i></div>
+                    <div><i class="bi bi-check"></i></div>
+                  </td>
+                  <td>
+                    <div>Y</div>
+                    <div>N</div>
+                    <div>N</div>
+                  </td>
+                  <td>
+                    <div class="commentText"
+                      title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est officiis at quisquam cupiditate ipsa impedit vel quasi? Nulla, dolores fugit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est officiis at quisquam cupiditate ipsa impedit vel quasi? Nulla, dolores fugit ">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est officiis at quisquam cupiditate ipsa
+                      impedit vel quasi? Nulla, dolores fugit Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Est officiis at quisquam cupiditate ipsa impedit vel quasi? Nulla, dolores fugit
+                    </div>
+                  </td>
+                  <td>
+                    <span type="button" class="bi bi-flag color-pink" data-bs-toggle="tooltip" data-bs-placement="left"
+                      title="Flagged by John doe, on 12/01/2023 because of this reason. Extra comments: Lorem ipsum dolor sit amet consectetur adipisicing elit."></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/assets/vendor/quill/quill.min.js"></script>
+  <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/assets/js/main.js"></script>
+
+
+</body>
+
+</html>
