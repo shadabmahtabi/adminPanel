@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            font-family: 'Consolas', monospace;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .wrapper {
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+            width: 360px;
+        }
+
+        @media (max-width: 400px) {
+            .wrapper {
+                padding: 0;
+            }
+        }
+
+        .file-upload-wrapper {
+            display: flex;
+        }
+
+        .video-container {
+            padding-top: 20px;
+        }
+
+        .upload-bar-container {
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid;
+            margin-top: 10px;
+        }
+
+        .upload-bar {
+            width: 0;
+            height: 30px;
+            background-color: green;
+        }
+
+        .upload-video-wrapper-input {
+            width: 300px;
+            position: relative;
+            margin-left: 15px;
+            padding-top: 5px;
+            height: 18px;
+        }
+
+        .upload-video-wrapper-input span {
+            color: #8c8c8c;
+            font-size: 14px;
+            width: 335px;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .upload-video-wrapper-input-wrapper {
+            width: 180px;
+            border-radius: 0 4px 4px 0;
+            border: 1px solid #8c8c8c;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-file-browser {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            top: 7px;
+            left: -94px;
+            color: #525252;
+        }
+
+        input:invalid~.chosen {
+            display: none;
+        }
+
+        .chosen {
+            position: absolute;
+            width: 99%;
+            height: 94%;
+            border: 1px solid #FE206D;
+            border-radius: 2px;
+        }
+
+        input:valid~.empty {
+            display: none;
+        }
+
+        .empty {
+            position: absolute;
+            width: 99%;
+            height: 94%;
+            border: 1px solid #082E65;
+            border-radius: 2px;
+            background: white;
+        }
+
+        .empty::after {
+            content: "no file upload";
+            position: absolute;
+            top: 9px;
+            left: 18px;
+            color: #8c8c8c;
+            font-size: 14px;
+        }
+
+        .video-upload-label-img {
+            width: 22px;
+            height: 22px;
+            filter: invert(55%) sepia(5%) saturate(6%) hue-rotate(53deg) brightness(99%) contrast(95%);
+        }
+
+        .video-upload-label {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            transition: 225ms;
+            height: 35px;
+            line-height: 33px;
+            border-radius: 4px 0 0 4px;
+            border: 1px solid #8c8c8c;
+            color: #8c8c8c;
+            width: 180px;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .video-upload-label p {
+            font-size: 14px;
+        }
+
+        .video-upload-label:hover {
+            border: 1px solid #525252;
+            background: #f3f3f3;
+        }
+
+        .upload-video {
+            background: #FE206D;
+            outline: none;
+            border: 1px solid #000;
+            color: white;
+            border-radius: 4px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 225ms;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            padding: 5px 0;
+        }
+
+        .upload-video:hover {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        }
+
+        .upload-video .upload-img {
+            width: 22px;
+            height: 22px;
+            filter: invert(99%) sepia(8%) saturate(61%) hue-rotate(327deg) brightness(122%) contrast(100%);
+        }
+
+        .file-preview {
+            width: 360px;
+            height: 360px;
+            margin: 10px 0 0 0;
+            position: relative;
+        }
+
+        .file-preview img {
+            width: 360px;
+            height: 360px;
+            object-fit: cover;
+            box-shadow: rgba(6, 24, 44, 0.4) 0 0 0 2px, rgba(6, 24, 44, 0.65) 0 4px 6px -1px, rgba(255, 255, 255, 0.08) 0 1px 0 inset;
+            border-radius: 2px;
+        }
+
+        .clear-btn {
+            position: absolute;
+            top: -7px;
+            right: -8px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50px;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid white;
+            color: white;
+            background: #FE206D;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/profilepic/<%= user._id %>" method="post" enctype="multipart/form-data" class="wrapper">
+
+            <div class="file-upload-wrapper">
+                <label for="customFileBrowser" class="video-upload-label">
+                    <img src="https://www.svgrepo.com/show/73906/cloud-upload.svg" alt="Logo"
+                        class="img-fluid video-upload-label-img">
+                    <p>Upload file</p>
+                </label>
+                <div class="upload-video-wrapper-input-wrapper">
+                    <input type="file" name="profilePic" accept=".jpg,.jpeg" onchange="readURL(this);" class="custom-file-browser" id="customFileBrowser" required>
+                    <span class="empty"></span>
+                    <span class="chosen"></span>
+                </div>
+            </div>
+
+            <figure class="file-preview">
+                <button type="button" id="clear" class="clear-btn">&#9747;</button>
+                <img id="imgPrev" class=""
+                    src="https://static.vecteezy.com/system/resources/previews/004/968/473/original/upload-or-add-a-picture-jpg-file-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-etc-vector.jpg"
+                    alt="your image" />
+            </figure>
+
+            <button type="submit" class="upload-video"><img
+                    src="https://cdn-icons-png.flaticon.com/512/8373/8373330.png" alt="Logo"
+                    class="img-fluid upload-img">
+                Submit
+            </button>
+        </form>
+    </div>
+
+    <script>
+        function readURL(input) {
+            let imgPrev = document.getElementById('imgPrev');
+            let clearButton = document.getElementById('clear');
+
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    imgPrev.src = e.target.result;
+                };
+
+                reader.onloadend = function () {
+                    clearButton.style.display = 'flex';
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                imgPrev.src = 'https://static.vecteezy.com/system/resources/previews/004/968/473/original/upload-or-add-a-picture-jpg-file-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-etc-vector.jpg';
+                clearButton.style.display = 'none';
+            }
+        }
+
+
+        function clearFileInput() {
+            let fileInput = document.getElementById('customFileBrowser');
+            let imgPrev = document.getElementById('imgPrev');
+            let clearButton = document.getElementById('clear');
+
+            fileInput.value = '';
+            imgPrev.src = 'https://static.vecteezy.com/system/resources/previews/004/968/473/original/upload-or-add-a-picture-jpg-file-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-etc-vector.jpg';
+            clearButton.style.display = 'none';
+        }
+
+        document.getElementById('clear').addEventListener('click', clearFileInput);
+    </script>
+</body>
+
+</html>

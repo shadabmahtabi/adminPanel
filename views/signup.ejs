@@ -206,7 +206,7 @@
             <input type="text" name="mobileNumber" id="mobileNumber" placeholder="Mobile Number" required>
 
             <!-- <label for="profilePic">Profile Image<span class="star-required">*</span></label>
-            <input type="text" name="profilePic" id="profilePic" placeholder="Image URL" required> -->
+            <input type="file" name="profilePic" id="profilePic" accept=".jpg,.jpeg" placeholder="Image URL" required> -->
 
             <label for="profession">Profession<span class="star-required">*</span></label>
             <input type="text" name="profession" id="profession" placeholder="Profession" required>
@@ -239,6 +239,20 @@
 
         </form> -->
     </div>
+
+
+    <!-- <script>
+        function checkFileSize() {
+            var input = document.getElementById('profilePic');
+            var file = input.files[0];
+            var fileSize = file.size / 1024 / 1024;
+            if (fileSize > 2) {
+                alert('File size exceeds 2 MB. Please select a smaller file.');
+                return false;
+            }
+            return true;
+        }
+    </script> -->
 </body>
 
 </html>
