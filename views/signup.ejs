@@ -82,7 +82,7 @@
             margin: auto 5px;
         }
 
-        input:not(input#terms-agree) {
+        input:not(input#terms-agree, input#profilePic) {
             background-color: #fff;
             width: 100%;
             height: 45px;
@@ -143,6 +143,24 @@
             color: #23236a;
         }
 
+        input[type=file] {
+            background-color: #ffffff;
+            width: 100%;
+            height: 45px;
+            border: 1px solid #cccccc;
+            border-radius: 30px;
+            color: #082E65;
+        }
+
+        input[type=file]::file-selector-button {
+            background-color: #e6e6e6;
+            width: 40%;
+            height: 100%;
+            border: 1px solid #cccccc;
+            border-radius: 30px;
+            margin-right: 10px;
+        }
+
         .have-account-line {
             margin: 30px 0 30px 0;
             font-size: 14px;
@@ -177,7 +195,7 @@
 
 <body>
     <div class="container">
-        <form action="/create" method="post" class="sign-form" id="sign-form" autocomplete="on">
+        <form action="/create" method="post" enctype="multipart/form-data" class="sign-form" id="sign-form" autocomplete="on">
             <h1 class="form-title">Sign Up</h1>
             <p class="form-caption">See your growth and get consulting support!</p>
             <!-- <button class="google-sign-btn"><i class="fa fa-google"></i> Sign up with Google</button>
@@ -203,10 +221,10 @@
             <input type="password" name="password" id="password" placeholder="Min. 8 character" required>
 
             <label for="mobileNumber">Mobile Number<span class="star-required">*</span></label>
-            <input type="text" name="mobileNumber" id="mobileNumber" placeholder="Mobile Number" required>
+            <input type="text" maxlength="10" name="mobileNumber" id="mobileNumber" placeholder="Mobile Number" required>
 
-            <!-- <label for="profilePic">Profile Image<span class="star-required">*</span></label>
-            <input type="file" name="profilePic" id="profilePic" accept=".jpg,.jpeg" placeholder="Image URL" required> -->
+            <label for="profilePic">Profile Image<span class="star-required">*</span></label>
+            <input type="file" name="profilePic" id="profilePic" accept=".jpg,.jpeg" placeholder="Image URL" required>
 
             <label for="profession">Profession<span class="star-required">*</span></label>
             <input type="text" name="profession" id="profession" placeholder="Profession" required>

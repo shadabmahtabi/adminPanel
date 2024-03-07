@@ -1,6 +1,6 @@
 const express = require("express");
 const userModel = require("./users");
-const ImageKit = require('../imagekit').initImagekit();
+const ImageKit = require("../imagekit").initImagekit();
 const path = require("path");
 const multer = require("multer");
 const router = express.Router();
@@ -21,13 +21,41 @@ router.get("/", (req, res, next) => {
 });
 
 // POST /create
-router.post("/create", async (req, res, next) => {
-  const user = await new userModel(req.body).save();
+router.post("/create", upload.single("profilePic"), async (req, res, next) => {
+  try {
+    const file = req.file;
+    const modified_filename = `profilePic-${Date.now()}${path.extname(
+      file.originalname
+    )}`;
 
-  res.render("profile", { title: "profile", user });
+    const { fileId, url } = await ImageKit.upload({
+      file: file.buffer,
+      fileName: modified_filename,
+    });
+
+    const { name, username, email, password, profession, mobileNumber } =
+      req.body;
+
+    const user = await new userModel({
+      name,
+      username,
+      password,
+      email,
+      mobileNumber,
+      profession,
+      profilePic: { fileId, url },
+    }).save();
+    res.redirect('back');
+
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-router.post("/profilepic/:id", upload.single("profilePic"), async (req, res, next) => {
+router.post(
+  "/profilepic/:id",
+  upload.single("profilePic"),
+  async (req, res, next) => {
     try {
       let user = await userModel.findById(req.params.id).exec();
       const file = req.file;
@@ -51,8 +79,8 @@ router.post("/profilepic/:id", upload.single("profilePic"), async (req, res, nex
       console.log(err);
     }
 
-    res.redirect('/')
-
-});
+    res.redirect("/");
+  }
+);
 
 module.exports = router;
